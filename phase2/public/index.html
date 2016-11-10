@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <title>DB</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'> -->
+    <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="assets/app.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/material.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-sweetalert/dist/sweetalert.css">
+
+    <script src="bower_components/cropper/cropper.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+
+
+
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+          display: none !important;
+        }
+    </style>
+  </head>
+
+  <body style="overflow-x:hidden;" ng-app="myApp" layout="column" ng-controller="UserController as user" ng-cloak>
+  <navbar ng-hide="isNavBarHide()"></navbar>
+    <div flex layout="row">
+      <left-sidebar></left-sidebar>
+
+      <md-content style="position:relative; overflow-x:hidden;" flex="100" id="main-content">
+        <div ng-view> </div>
+      </md-content>
+
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCfGAw5Hj63lMSn79J02ZXgQhOT078zER0",
+      authDomain: "yonomecuelgo.firebaseapp.com",
+      storageBucket: "yonomecuelgo.appspot.com",
+      messagingSenderId: "105584327492"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="../node_modules/angular/angular.js"></script>
+  <script src="../node_modules/angular-animate/angular-animate.js"></script>
+  <script src="../node_modules/angular-aria/angular-aria.js"></script>
+  <script src="../node_modules/angular/spin.js"></script>
+  <script type="text/javascript" src="../node_modules/angular-material/angular-material.js"></script>
+  <script src="./src/users/Users.js"></script>
+  <script src="./src/users/UserController.js"></script>
+  <script src="./src/users/UserService.js"></script>
+  <script src="./src/userProvider.js"></script>
+  <script src="./src/leftSidebarDirective.js"></script>
+  <script src="./src/navBarDirective.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/bootstrap-sweetalert/dist/sweetalert.js"></script>
+  <script src="src/login/submitController.js"></script>
+  <script src="src/courses/controller/coursesController.js"></script>
+  <script src="src/settings/controller/settingsController.js"></script>
+  <script src="src/search bar/controller/searchBarController.js"></script>
+  <script src="src/search bar/directive/searchBarDirective.js"></script>
+  <script src="src/groups/controller/groupController.js"></script>
+  <script src="bower_components/jquery.countdown/dist/jquery.countdown.js"></script>
+  <script src="../node_modules/angular-messages/angular-messages.min.js"></script>
+  <script src="./assets/ng-material.js"></script>
+  <script src = "src/tutors/controller/tutorsController.js"></script>
+  <script type="text/javascript">
+
+          angular
+              .module('myApp', ['ngMaterial', 'users'])
+              .config(function($mdThemingProvider, $mdIconProvider){
+
+                  $mdIconProvider
+                      .defaultIconSet("./assets/svg/avatars.svg", 128)
+                      .icon("menu"       , "./assets/svg/menu.svg"        , 24)
+                      .icon("share"      , "./assets/svg/share.svg"       , 24)
+                      .icon("google_plus", "./assets/svg/google_plus.svg" , 512)
+                      .icon("hangouts"   , "./assets/svg/hangouts.svg"    , 512)
+                      .icon("twitter"    , "./assets/svg/twitter.svg"     , 512)
+                      .icon("phone"      , "./assets/svg/phone.svg"       , 512);
+
+                      $mdThemingProvider.theme('default')
+                          .primaryPalette('blue')
+                          .accentPalette('red');
+
+              });
+
+  </script>
+
+
+</html>
