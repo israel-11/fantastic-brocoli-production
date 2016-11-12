@@ -22,7 +22,6 @@ var app = angular.module("users")
     self.toggleList   = toggleUsersList;
     self.makeContact  = makeContact;
     $scope.myDate='';
-    $scope.userEmail='';
     $scope.countdown='__________';
     $scope.showCalendar=false;
     $scope.isFire=false;
@@ -143,31 +142,33 @@ var app = angular.module("users")
     $scope.logIn = function(){
             var validated = true;
             var email = $scope.userEmail;
+            var password = $scope.userPassword;
             if (typeof email === 'undefined' || !email) {
               swal("Please type an email", "", "warning");
               validated = false;
             }
-            var password = $scope.userPassword;
-            if (typeof password === 'undefined' || !password) {
+            else if (typeof password === 'undefined' || !password) {
               swal("Please type a password", "", "warning");
               validated = false;
             }
             $scope.userRole='students';
             if(validated){
-              console.log(email)
-              console.log(password)
+              $scope.loading=true;
               firebase.auth().signInWithEmailAndPassword(email, password)
               .then(function(onResolve){
                 // $scope.route('home')
+                $scope.loading=false;
               }).catch(function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 if (errorCode === 'auth/wrong-password') {
-                  swal("Wrong Password", "", "danger");
+                  swal("Wrong Password", "", "error");
                 } else {
-                  swal(errorMessage, "", "danger");
+                  swal(errorMessage, "", "error");
                 }
+                $scope.loading=false;
+                $timeout($scope.$apply());
             });
           }
         }
@@ -201,7 +202,7 @@ var app = angular.module("users")
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                swal(errorMessage, "", "danger");
+                swal(errorMessage, "", "error");
             });
             }
           }
@@ -217,7 +218,7 @@ var app = angular.module("users")
 
         $scope.forgotPassword = function(){
           var email=$scope.userEmail;
-          if(email.length==0){
+          if(typeof email === 'undefined' || !email){
             swal('Please type your email.', "", "info");
           }
           else{
@@ -228,7 +229,7 @@ var app = angular.module("users")
               // Handle Errors here.
               var errorCode = error.code;
               var errorMessage = error.message;
-              swal(errorMessage, "", "danger");
+              swal(errorMessage, "", "error");
 
           });
           }

@@ -12,7 +12,7 @@
                 <!-- Use floating label instead of placeholder -->
                 <label>Email</label>
                 <md-icon style="font-size:20px;" class="fa fa-envelope"></md-icon>
-                <input ng-model="userEmail" type="email" value="">
+                <input ng-model="userEmail" type="text" value="">
             </md-input-container>
             <md-input-container class="md-icon-float md-block">
                 <!-- Use floating label instead of placeholder -->
@@ -28,5 +28,6 @@
                 <md-button ng-click="logIn()" flex="50" class="md-raised md-primary">Log In</md-button>
             </md-content>
         </md-content>
+        <span ng-show="loading" us-spinner="{radius:30, width:8, length: 16}"></span>
     </md-content>
 </div>
