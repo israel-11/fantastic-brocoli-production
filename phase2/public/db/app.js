@@ -4,7 +4,7 @@ var mysql = require("mysql");
 var con = mysql.createConnection({
   host: "mysql4.gear.host",
   user: "icom5016",
-  password: "Yp5Sen~8XA_9",
+  password: "Yk8Hp?sFX0-V",
   database: "icom5016"
 });
 
@@ -19,15 +19,15 @@ con.connect(function(err){
 var query = [];
 query.push('SELECT * FROM user');
 query.push('SELECT * FROM student');
-query.push('SELECT * FROM isStudent');
-query.push('SELECT * FROM countdown');
-query.push('SELECT * FROM hasCountdown');
 query.push('SELECT * FROM tutor');
-query.push('SELECT * FROM isTutor');
-query.push('SELECT * FROM card');
+query.push('SELECT * FROM countdown');
+query.push('SELECT * FROM takes');
+query.push('SELECT * FROM teaches');
+query.push('SELECT * FROM pertains');
+query.push('SELECT * FROM groupMessages');
 query.push('SELECT * FROM groups');
 query.push('SELECT * FROM message');
-query.push('SELECT * FROM courses');
+query.push('SELECT * FROM course');
 // query.push('SELECT * FROM allCourses');
 for(var i =0; i<query.length;i++){
     con.query(query[i],function(err,rows){
