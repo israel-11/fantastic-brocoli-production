@@ -22,7 +22,6 @@ var app = angular.module("users")
     self.toggleList   = toggleUsersList;
     self.makeContact  = makeContact;
     $scope.myDate='';
-    $scope.userEmail='';
     $scope.countdown='__________';
     $scope.showCalendar=false;
     $scope.isFire=false;
@@ -164,9 +163,9 @@ var app = angular.module("users")
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 if (errorCode === 'auth/wrong-password') {
-                  swal("Wrong Password", "", "danger");
+                  swal("Wrong Password", "", "error");
                 } else {
-                  swal(errorMessage, "", "danger");
+                  swal(errorMessage, "", "error");
                 }
             });
           }
@@ -201,7 +200,7 @@ var app = angular.module("users")
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                swal(errorMessage, "", "danger");
+                swal(errorMessage, "", "error");
             });
             }
           }
@@ -228,7 +227,7 @@ var app = angular.module("users")
               // Handle Errors here.
               var errorCode = error.code;
               var errorMessage = error.message;
-              swal(errorMessage, "", "danger");
+              swal(errorMessage, "", "error");
 
           });
           }
