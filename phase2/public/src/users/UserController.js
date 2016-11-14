@@ -198,6 +198,36 @@ var app = angular.module("users")
                 firebase.auth().currentUser.sendEmailVerification();
                 swal('Verification email sent.', "", "success");
                 $route.reload();
+                //
+                swal.setDefaults({
+                  input: 'text',
+                  confirmButtonText: 'Next &rarr;',
+                  showCancelButton: true,
+                  animation: false,
+                  progressSteps: ['1', '2', '3']
+                })
+
+                var steps = [
+                  {
+                    title: 'Set Up your info.',
+                    text: 'What is your name?'
+                  },
+                  'Question 2',
+                  'Question 3'
+                ]
+
+                swal.queue(steps).then(function (result) {
+                  swal.resetDefaults()
+                  swal({
+                    title: 'All done!',
+                    html:'Welcome: <h4>' + JSON.stringify(result[0]) + '</h4>',
+                    confirmButtonText: 'Lovely!',
+                    showCancelButton: false
+                  })
+                }, function () {
+                  swal.resetDefaults()
+                })
+                //
               }).catch(function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;
@@ -218,7 +248,7 @@ var app = angular.module("users")
 
         $scope.forgotPassword = function(){
           var email=$scope.userEmail;
-          if(typeof email === 'undefined' || !email){
+          if(typeof email === 'undefined' || !emailsorry){
             swal('Please type your email.', "", "info");
           }
           else{
