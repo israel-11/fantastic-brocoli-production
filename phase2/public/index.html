@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/material.css">
-    <link rel="stylesheet" href="bower_components/bootstrap-sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.css">
+    <link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
 
     <script src="bower_components/cropper/cropper.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -66,7 +67,10 @@
   <script src="./src/leftSidebarDirective.js"></script>
   <script src="./src/navBarDirective.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/bootstrap-sweetalert/dist/sweetalert.js"></script>
+  <script src="bower_components/sweetalert2/dist/sweetalert2.js"></script>
+  <script src="bower_components/spin.js/spin.js"></script>
+  <script src="bower_components/angular-spinner/angular-spinner.js"></script>
+  <script src="bower_components/angular-loading-spinner/angular-loading-spinner.js"></script>
   <script src="src/login/submitController.js"></script>
   <script src="src/courses/controller/coursesController.js"></script>
   <script src="src/settings/controller/settingsController.js"></script>
@@ -80,7 +84,7 @@
   <script type="text/javascript">
 
           angular
-              .module('myApp', ['ngMaterial', 'users'])
+              .module('myApp', ['ngMaterial', 'users','angularSpinner'])
               .config(function($mdThemingProvider, $mdIconProvider){
 
                   $mdIconProvider

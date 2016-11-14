@@ -29,6 +29,12 @@
                 <p flex="80" data-toggle="modal">Home</p>
             </md-button>
         </md-list-item>
+        <md-list-item layout="row">
+            <md-button ng-click="route('/inbox')" layout="row">
+                <p class="fa fa-envelope fa-lg" flex="20"></p>
+                <p flex="80">Inbox</p>
+            </md-button>
+        </md-list-item>
         <md-list-item ng-if="userRole!='tutors'" layout="row">
             <md-button ng-click="route('/courses')" layout="row">
                 <p class="fa fa-book fa-lg" flex="20" data-toggle="modal"></p>

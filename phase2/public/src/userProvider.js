@@ -3,48 +3,43 @@ var app = angular.module("users")
 
     $routeProvider.when('/login',
         {
-          templateUrl:    'login.html',
-          controller:     'authenticationController'
+          templateUrl:    'login.html'
         });
     $routeProvider.when('/home',
     {
-      templateUrl:    'src/home/view/home.html',
-      controller:     'authenticationController'
+      templateUrl:    'src/home/view/home.html'
     });
     $routeProvider.when('/courses',
     {
-      templateUrl:    'src/courses/view/courses.html',
-      controller:     'authenticationController'
+      templateUrl:    'src/courses/view/courses.html'
     });
     $routeProvider.when('/courses/tutors-profile',
     {
-          templateUrl:    'src/tutors/view/tutors-profile.html',
-          controller:     'authenticationController'
+          templateUrl:    'src/tutors/view/tutors-profile.html'
     });
     $routeProvider.when('/groups',
     {
-      templateUrl:    'src/groups/view/groups.html',
-      controller:     'authenticationController'
+      templateUrl:    'src/groups/view/groups.html'
     });
     $routeProvider.when('/tutors',
     {
-          templateUrl:    'src/tutors/view/tutors.html',
-          controller:     'authenticationController'
+          templateUrl:    'src/tutors/view/tutors.html'
     });
     $routeProvider.when('/settings',
     {
-          templateUrl:    'src/settings/view/settings.html',
-          controller:     'authenticationController'
+          templateUrl:    'src/settings/view/settings.html'
     });
     $routeProvider.when('/verify',
     {
-          templateUrl:    'verify.html',
-          controller:     'authenticationController'
+          templateUrl:    'verify.html'
+    });
+    $routeProvider.when('/inbox',
+    {
+          templateUrl:    'src/inbox/view/inbox.html'
     });
     $routeProvider.otherwise(
     {
-      redirectTo:     '/login',
-      controller:     'authenticationController',
+      redirectTo:     '/login'
     }
   );
 });
@@ -83,5 +78,5 @@ app.controller('SettingsCtrl', function($scope, $compile) {
 
 });
 app.controller('authenticationController', function($scope, $compile) {
-  
+
 });

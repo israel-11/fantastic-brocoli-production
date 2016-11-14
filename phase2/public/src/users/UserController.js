@@ -142,22 +142,22 @@ var app = angular.module("users")
     $scope.logIn = function(){
             var validated = true;
             var email = $scope.userEmail;
+            var password = $scope.userPassword;
             if (typeof email === 'undefined' || !email) {
               swal("Please type an email", "", "warning");
               validated = false;
             }
-            var password = $scope.userPassword;
-            if (typeof password === 'undefined' || !password) {
+            else if (typeof password === 'undefined' || !password) {
               swal("Please type a password", "", "warning");
               validated = false;
             }
             $scope.userRole='students';
             if(validated){
-              console.log(email)
-              console.log(password)
+              $scope.loading=true;
               firebase.auth().signInWithEmailAndPassword(email, password)
               .then(function(onResolve){
                 // $scope.route('home')
+                $scope.loading=false;
               }).catch(function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;
@@ -167,6 +167,8 @@ var app = angular.module("users")
                 } else {
                   swal(errorMessage, "", "error");
                 }
+                $scope.loading=false;
+                $timeout($scope.$apply());
             });
           }
         }
@@ -196,6 +198,36 @@ var app = angular.module("users")
                 firebase.auth().currentUser.sendEmailVerification();
                 swal('Verification email sent.', "", "success");
                 $route.reload();
+                //
+                swal.setDefaults({
+                  input: 'text',
+                  confirmButtonText: 'Next &rarr;',
+                  showCancelButton: true,
+                  animation: false,
+                  progressSteps: ['1', '2', '3']
+                })
+
+                var steps = [
+                  {
+                    title: 'Set Up your info.',
+                    text: 'What is your name?'
+                  },
+                  'Question 2',
+                  'Question 3'
+                ]
+
+                swal.queue(steps).then(function (result) {
+                  swal.resetDefaults()
+                  swal({
+                    title: 'All done!',
+                    html:'Welcome: <h4>' + JSON.stringify(result[0]) + '</h4>',
+                    confirmButtonText: 'Lovely!',
+                    showCancelButton: false
+                  })
+                }, function () {
+                  swal.resetDefaults()
+                })
+                //
               }).catch(function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;
@@ -216,7 +248,7 @@ var app = angular.module("users")
 
         $scope.forgotPassword = function(){
           var email=$scope.userEmail;
-          if(email.length==0){
+          if(typeof email === 'undefined' || !emailsorry){
             swal('Please type your email.', "", "info");
           }
           else{
