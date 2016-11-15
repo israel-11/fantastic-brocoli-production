@@ -4,17 +4,20 @@ var app = angular.module("users")
    var arrowDownIcon = "fa fa-chevron-down";
    var arrowLeftIcon = "fa fa-chevron-left";
 
+   var tutors = [{'name' : 'Tahiri Ciquitraque'}, {'name' : 'Nelson Triple A'}, {'name' : 'Israel La Bestia'}]
+
+
    $scope.courseList=[
-    {'name' : 'ICOM5016',
+    {'code' : 'ICOM5016', 'name' : 'Database Systems', 'tutors' : tutors,
      'arrowIcon':arrowLeftIcon
     },
-    {'name' : 'ICOM4035',
+    {'code' : 'ICOM4035', 'name' : 'Data Structures', 'tutors' : tutors,
      'arrowIcon':arrowLeftIcon
     },
-    {'name' : 'ICOM4075',
+    {'code' : 'ICOM4075', 'name' : 'Foundations of Computing', 'tutors' : tutors,
      'arrowIcon':arrowLeftIcon
     },
-    {'name' : 'ICOM4009',
+    {'code' : 'ICOM4009', 'name' : 'Software Engineering', 'tutors' : tutors,
      'arrowIcon':arrowLeftIcon
      }
    ];
