@@ -1,35 +1,66 @@
 <div ng-controller="groupController as groups">
-    <md-content style="overflow-x:hidden;" flex="80" flex-offset="10">
-        <h1>My Groups</h1>
-        <md-button ng-controller="groupController" ng-click="showTabDialog($event)" style="margin-top:-4%;" type="button" data-toggle="modal" data-target='#n' class="md-primary md-raised btn btn-info col-xs-2 col-xs-push-10">New Group</md-button>
-        <md-divider></md-divider>
+  <md-content style="overflow-x:hidden;" flex="80" flex-offset="10">
+      <h1>My Groups
+        <md-button ng-controller="groupController" ng-click="showTabDialog($event)" style="position: absolute; right: 0;" class="md-fab md-mini md-secondary" aria-label="New Group">
+            <md-icon class="fa fa-plus fa-lg" style="margin-top: 45%; color: white;"></md-icon>
+        </md-button>
+      </h1>
+      <md-divider></md-divider>
 
-        <md-list ng-repeat="group in groupsList">
-            <md-button ng-click="toggleGroups($index)" style="width: 100%" data-toggle="collapse" data-target="#{{group.id}}">
-                <md-list-item class="md-3-line">
-                    <div class="md-list-item-text">
-                        <h2 style="font-size:170%;" align="left">{{group.name}}</h2>
-                    </div>
-                    <i class="md-secondary {{group.arrowIcon}}"></i>
-                    <md-divider ></md-divider>
+      <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="50" layout="column">
+          <md-card md-theme="default" ng-repeat="group in groupList" ng-if="$index%2==0">
+            <md-card-title style="background-color: #00BF96">
+              <span class="md-headline" style="color: white;">{{group.name}}</span>
+            </md-card-title>
+            <md-card-title>
+              <span class="md-subhead">Capacity: {{group.size}} of {{group.limit}}</span>
+            </md-card-title>
+            <md-card-content md-scroll-y style="height: 150px; overflow: scroll;">
+              <md-list ng-repeat="members in group.members">
+                <md-list-item>
+                  <img ng-src="http://www.elgenero.com/images/anuel.jpg" class="md-avatar" />
+                  <!--<div class="md-list-item-text" layout="row">-->
+                      <p>{{members.name}}</p>
+                  <!-- </div> -->
+                  <md-divider ></md-divider>
+              </md-list-item>
+            </md-list>
+          </md-card-content>
+
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button>Message</md-button>
+            <md-button>Leave</md-button>
+          </md-card-actions>
+        </md-card>
+      </div>
+
+      <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="default" ng-repeat="group in groupList" ng-if="$index%2!=0">
+          <md-card-title style="background-color: #00BF96">
+            <span class="md-headline" style="color: white;">{{group.name}}</span>
+          </md-card-title>
+          <md-card-title>
+            <span class="md-subhead">Capacity: {{group.size}} of {{group.limit}}</span>
+          </md-card-title>
+          <md-card-content md-scroll-y style="height: 150px; overflow: scroll;">
+            <md-list ng-repeat="members in group.members">
+                <md-list-item>
+                  <img ng-src="http://www.elgenero.com/images/anuel.jpg" class="md-avatar" />
+                  <!--<div class="md-list-item-text" layout="row">-->
+                      <p>{{members.name}}</p>
+                  <!-- </div> -->
+                  <md-divider ></md-divider>
                 </md-list-item>
-            </md-button>
-            <div class="collapse" id="{{group.id}}">
-                <md-subheader class="md-no-sticky" style="padding-top: 0px; padding-bottom: 0px;">
-                    <div>
-                        <h5 style="height: 36px; line-height: 250%;">Capacity: {{group.size}} of {{group.limit}} <md-button ng-click="removeGroup(group)" class="md-primary" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; height: 30px; float: right;">Leave</md-button>
-                        </h5>
-                    </div>
-                    <md-list ng-repeat="members in group.members" style="height: 76px; padding-top: 0px; padding-bottom: 0px;">
-                        <md-list-item class="md-3-line">
-                            <img ng-src="http://www.elgenero.com/images/anuel.jpg" class="md-avatar" />
-                            <div class="md-list-item-text" layout="row">
-                                <h3 style="margin-bottom:1%;">{{members.name}}</h3>
-                            </div>
-                        </md-list-item>
-                    </md-list>
-                </md-subheader>
-            </div>
-        </md-list>
+              </md-list>
+            </md-card-content>
+
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button>Message</md-button>
+              <md-button>Leave</md-button>
+            </md-card-actions>
+          </md-card>
+        </div>
+      </md-content>
     </md-content>
 </div>
