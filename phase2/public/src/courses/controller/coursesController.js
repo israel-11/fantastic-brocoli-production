@@ -42,6 +42,7 @@ var app = angular.module("users")
 
        for(var i = 0; i < studentInfo.length; i++){
          var object = {'code' : studentInfo[i].courseCode,
+                       'name' : studentInfo[i].courseName,
                        'tutors': getTutors(studentInfo[i].tutors)
                       };
          $scope.courseList.push(object);

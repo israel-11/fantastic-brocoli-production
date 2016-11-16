@@ -1,5 +1,5 @@
 var app = angular.module("users")
-    .controller('UserController', function(userService, $mdSidenav, $mdBottomSheet, $timeout, $log, $scope, $mdDialog, $location, $rootScope, $q, $route)
+    .controller('UserController',['userService','$mdSidenav','' function(userService, $mdSidenav, $mdBottomSheet, $timeout, $log, $scope, $mdDialog, $location, $rootScope, $q, $route, DirectMessageService)
 //    .config(['$mdIconProvider', function($mdIconProvider) {
 //         $mdIconProvider.icon('md-close', 'img/icons/ic_close_24px.svg', 24);
 //    }])
@@ -327,6 +327,8 @@ var app = angular.module("users")
     $scope.toggleRightList = function(){
       $mdSidenav('right').toggle();
     }
+
+
 
     //
     var imagePath = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtf1/v/t1.0-1/13912618_10154625059185827_4804033282118954744_n.jpg?oh=71c307466a6f3cf85ffc580d1a588c02&oe=58C703DB&__gda__=1485738904_e299d10033dcc5340dcf7c055ddfd831";
@@ -771,4 +773,4 @@ var app = angular.module("users")
          };
        }
 
-  });
+  }]);

@@ -12,16 +12,27 @@
               </span>
             </md-card-title>
             <md-card-title>
-              <span class="md-subhead">Available Tutors:</span>
+              <span ng-if="course.tutors[0].first" class="md-subhead">Available Tutors:</span>
+              <span ng-if="!course.tutors[0].first" class="md-subhead">We are sorry</span>
             </md-card-title>
-            <md-card-content md-scroll-y style="height: 150px; overflow: scroll;">
+            <md-card-content md-scroll-y style="height: 150px; overflow-x:hidden; overflow-y:scroll;">
+            <md-list ng-if="!course.tutors[0].first">
+              <md-list-item>
+                <!-- <img ng-src="{{tutor.image}}" class="md-avatar" /> -->
+                <!--<div class="md-list-item-text" layout="row">-->
+                <h4 class="text-center">There are no tutors for this course.</h4>
+                <!-- </div> -->
+                <md-divider ></md-divider>
+              </md-list-item>
+            </md-list>
               <md-list ng-repeat="tutor in course.tutors">
                 <md-list-item>
-                  <img ng-src="http://www.elgenero.com/images/anuel.jpg" class="md-avatar" />
+                  <img ng-src="{{tutor.image}}" class="md-avatar" />
                   <!--<div class="md-list-item-text" layout="row">-->
-                  <p>{{tutor.name}}</p>
+                  <p>{{tutor.first}} {{tutor.last}}</p>
                   <!-- </div> -->
-                  <md-icon ng-click="doSecondaryAction($event)" aria-label="Send Message" style="position: absolute; right: 0;" class="md-secondary md-hue-3 fa fa-comments fa-lg" ></md-icon>
+                  <md-icon ng-click="" aria-label="Send Message" style="position: absolute; right: 0;" class="md-secondary md-hue-3 fa fa-comments fa-lg" ></md-icon>
+                  <md-icon ng-click="" aria-label="Send Gift" style="position: absolute; right: 0;" class="md-secondary md-hue-3 fa fa-gift fa-lg" ></md-icon>
                   <md-divider ></md-divider>
               </md-list-item>
             </md-list>
@@ -42,16 +53,27 @@
             </span>
           </md-card-title>
           <md-card-title>
-            <span class="md-subhead">Available Tutors:</span>
+            <span ng-if="course.tutors[0].first" class="md-subhead">Available Tutors:</span>
+            <span ng-if="!course.tutors[0].first" class="md-subhead">We are sorry</span>
           </md-card-title>
-          <md-card-content md-scroll-y style="height: 150px; overflow: scroll;">
+          <md-card-content md-scroll-y style="height: 150px; overflow-x: hidden; overflow-y:scroll;">
+            <md-list ng-if="!course.tutors[0].first">
+              <md-list-item>
+                <!-- <img ng-src="{{tutor.image}}" class="md-avatar" /> -->
+                <!--<div class="md-list-item-text" layout="row">-->
+                <h4 class="text-center">There are no tutors for this course.</h4>
+                <!-- </div> -->
+                <md-divider ></md-divider>
+              </md-list-item>
+            </md-list>
             <md-list ng-repeat="tutor in course.tutors">
                 <md-list-item>
-                  <img ng-src="http://www.elgenero.com/images/anuel.jpg" class="md-avatar" />
+                  <img ng-src="{{tutor.image}}" class="md-avatar" />
                   <!--<div class="md-list-item-text" layout="row">-->
-                      <p>{{tutor.name}}</p>
+                      <p>{{tutor.first}} {{tutor.last}}</p>
                   <!-- </div> -->
-                  <md-icon ng-click="doSecondaryAction($event)" aria-label="Send Email" class="md-secondary md-hue-3 fa fa-comments fa-lg" ></md-icon>
+                  <md-icon ng-click="" aria-label="Send Message" style="position: absolute; right: 0;" class="md-secondary md-hue-3 fa fa-comments fa-lg" ></md-icon>
+                  <md-icon ng-click="" aria-label="Send Gift" style="position: absolute; right: 0;" class="md-secondary md-hue-3 fa fa-gift fa-lg" ></md-icon>
                   <md-divider ></md-divider>
                 </md-list-item>
               </md-list>
