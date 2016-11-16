@@ -86,10 +86,11 @@
   <script src="../node_modules/angular-messages/angular-messages.min.js"></script>
   <script src="./assets/ng-material.js"></script>
   <script src = "src/tutors/controller/tutorsController.js"></script>
+  <script src="dirPagination.js"></script>
   <script type="text/javascript">
 
           angular
-              .module('myApp', ['ngMaterial', 'users','angularSpinner'])
+              .module('myApp', ['ngMaterial', 'users','angularSpinner','angularUtils.directives.dirPagination'])
               .config(function($mdThemingProvider, $mdIconProvider){
 
                   $mdIconProvider

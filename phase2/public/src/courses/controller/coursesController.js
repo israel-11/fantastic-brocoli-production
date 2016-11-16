@@ -1,8 +1,10 @@
 var app = angular.module("users")
 .controller('coursesController',['$scope','$compile','$location','studentService', function($scope, $compile, $location, studentService) {
 
-   var arrowDownIcon = "fa fa-chevron-down";
-   var arrowLeftIcon = "fa fa-chevron-left";
+   $scope.start = 0;
+   $scope.end = 1;
+   $scope.currentPage=1;
+   $scope.pageSize=2;
 
   //  var tutors = [{'name' : 'Tahiri Ciquitraque'}, {'name' : 'Nelson Triple A'}, {'name' : 'Israel La Bestia'}]
    //
@@ -53,14 +55,47 @@ var app = angular.module("users")
        $location.path(path);
    }
 
-   $scope.toggleCourse = function(i){
-    if($scope.courseList[i].arrowIcon.search(arrowDownIcon)>-1){
-        $scope.courseList[i].arrowIcon = arrowLeftIcon;
-    }
-    else{
-        $scope.courseList[i].arrowIcon = arrowDownIcon;
-    }
+   $scope.hasPrevious = function(){
+     if($scope.start>0)
+      return true;
+     return false;
+   }
 
+   $scope.hasNext = function(){
+     if($scope.end<$scope.availableTutors.length)
+      return true;
+     return false;
+   }
+
+   $scope.nextTutors = function(){
+     if($scope.hasNext()){
+       $scope.start = $scope.end;
+       $scope.end++;
+       if($scope.hasNext()){
+         $scope.end++;
+       }
+     }
+   }
+
+   $scope.previousTutors = function(){
+     if($scope.hasPrevious()){
+       $scope.end = $scope.start;
+       $scope.start=$scope.start-2;
+     }
+   }
+
+   $scope.getAvailableTutors = function(tutors){
+     $scope.availableTutors = tutors.slice();
+     if (tutors.length == 0){
+       return tutors;
+     }
+     if($scope.start==0){
+       if(tutors.length>1){
+         $scope.end=2;
+       }
+     }
+     console.log($scope.start+" "+$scope.end);
+     return tutors;
    }
 
 }]);

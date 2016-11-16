@@ -1,5 +1,5 @@
 var app = angular.module("users")
-    .controller('UserController',['userService','$mdSidenav','' function(userService, $mdSidenav, $mdBottomSheet, $timeout, $log, $scope, $mdDialog, $location, $rootScope, $q, $route, DirectMessageService)
+    .controller('UserController',['userService','$mdSidenav','$mdBottomSheet', '$timeout', '$log', '$scope', '$mdDialog', '$location', '$rootScope', '$q', '$route', 'DirectMessageService', function(userService, $mdSidenav, $mdBottomSheet, $timeout, $log, $scope, $mdDialog, $location, $rootScope, $q, $route, DirectMessageService)
 //    .config(['$mdIconProvider', function($mdIconProvider) {
 //         $mdIconProvider.icon('md-close', 'img/icons/ic_close_24px.svg', 24);
 //    }])

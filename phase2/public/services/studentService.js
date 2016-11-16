@@ -16,7 +16,6 @@ function($http) {
 	studentService.getStudentCourses = function(studentID){
 	    return $http.get("http://glacial-journey-85518.herokuapp.com/studentCourses/"+studentID)
 	    .then(function(response) {
-	        console.log(JSON.stringify(response.data));
 	        return response.data;
 	    })
 	    .catch(null, function(err) {
