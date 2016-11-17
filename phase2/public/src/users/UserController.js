@@ -719,8 +719,9 @@ var app = angular.module("users")
                     else
                     {
                         $scope.userRole = 'tutors';
-                        $scope.status = users[i].userStatus;
+                        $scope.statusMessage = users[i].userStatus;
                         $scope.profilePicture = users[i].userImage;
+                        $scope.userName = users[i].userFirstName;
                     }
                 }
             }
