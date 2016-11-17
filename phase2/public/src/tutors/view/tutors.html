@@ -6,7 +6,7 @@
       <md-content class="md-padding" layout="row">
        <md-list flex>
        <!-- <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader> -->
-       <md-list-item ng-if="message.userFirstName" class="md-3-line" ng-repeat="message in messages">
+       <md-list-item ng-if="messages.length > 0" class="md-3-line" ng-repeat="message in messages">
          <div>
            <img ng-src="{{message.userImage}}" class="md-avatar" />
            <div class="md-list-item-text" layout="column">
@@ -18,7 +18,7 @@
            <md-divider ng-if="!$last"></md-divider>
          </div>
        </md-list-item>
-       <md-list-item ng-if="!message.userFirstName" class="md-3-line">
+       <md-list-item ng-if="message.length == 0" class="md-3-line">
          <div>
            <md-subheader>No messages. Sorry!</md-subheader>
          </div>

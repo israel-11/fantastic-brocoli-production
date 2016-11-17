@@ -731,6 +731,22 @@ var app = angular.module("users")
                                            }
 
                                        });
+                                    studentService.getGroupMessages(id)
+                                      .then(function(response){
+
+                                          $scope.groupMessages = [];
+                                          for(var i = 0; i < response.length; i++)
+                                          {
+                                              var object = {'userImage': response[i].userImage,
+                                                              'title': response[i].title,
+                                                              'userFirstName': response[i].userFirstName,
+                                                              'userLastName': response[i].userLastName,
+                                                              'body': response[i].body};
+
+                                              $scope.groupMessages.push(object);
+                                          }
+
+                                      });
 
                                 });
                     }
