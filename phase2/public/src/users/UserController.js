@@ -737,16 +737,17 @@ var app = angular.module("users")
                                         function setAvailability(av)
                                         {
                                             if(av === 0)
-                                                return false;
+                                                return 'Unavailable';
                                             else
-                                                return true;
+                                                return 'Available';
                                         }
 
                                         for(var i = 0; i < response.length; i++)
                                         {
-                                            var object = {'id': response[0].courseId,
-                                                        'name': response[0].courseName,
-                                                        'availability': setAvailability(response[0].available)};
+                                            var object = {'id': response[i].courseId,
+                                                        'code': response[i].courseCode,
+                                                        'name': response[i].courseName,
+                                                        'availability': setAvailability(response[i].available)};
                                             $scope.courseList.push(object);
                                         }
                                     });
