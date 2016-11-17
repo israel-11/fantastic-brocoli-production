@@ -25,7 +25,7 @@ function($http) {
 	}
 
 	studentService.getStudentGroups = function(studentID){
-    	    return $http.get("https://glacial-journey-85518.herokuapp.com/studentGroups/"+studentID)
+    	    return $http.get("https://glacial-journey-85518.herokuapp.com/groupStudents/"+studentID)
     	    .then(function(response) {
     	        return response.data;
     	    })
@@ -45,27 +45,6 @@ function($http) {
         	    })
 
         }
-
-    studentService.getStudentInfo = function(studentID){
-             return $http.get("https://glacial-journey-85518.herokuapp.com/studentInfo/"+studentID)
-                .then(function(response) {
-                    return response.data;
-                })
-                .then(null, function(err) {
-                    console.error(err);
-                })
-        }
-
-    studentService.getCountdown = function(studentID){
-            return $http.get("https://glacial-journey-85518.herokuapp.com/countdown/"+studentID)
-                            .then(function(response) {
-                                return response.data;
-                            })
-                            .then(null, function(err) {
-                                console.error(err);
-                            })
-
-    }
 
 
 	return studentService;

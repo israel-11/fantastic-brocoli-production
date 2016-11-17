@@ -23,13 +23,6 @@ var app = angular.module("users")
     $scope.showName=false;
     self.courseList=[];
 
-    accountsService.getUsers()
-        .then(function(response){
-
-            assignUserInfo(response);
-
-        });
-
     function getSettings(){
       // GET User Information
       var id;
@@ -46,6 +39,12 @@ var app = angular.module("users")
         $scope.route('/home');
 //        $route.reload();
       }
+      accountsService.getUsers()
+          .then(function(response){
+
+              assignUserInfo(response);
+
+          });
       }
 
 
