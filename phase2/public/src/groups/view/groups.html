@@ -9,19 +9,20 @@
 
       <md-content class="md-padding" layout-xs="column" layout="row">
         <div flex-xs flex-gt-xs="50" layout="column">
-          <md-card md-theme="default" ng-repeat="group in groupList" ng-if="$index%2==0">
+          <md-card md-theme="default" ng-repeat="group in myGroupsList" ng-if="$index%2==0">
             <md-card-title style="background-color: #00BF96">
               <span class="md-headline" style="color: white;">{{group.name}}</span>
             </md-card-title>
             <md-card-title>
-              <span class="md-subhead">Capacity: {{group.size}} of {{group.limit}}</span>
+              <span flex="40" class="md-subhead">Capacity: {{group.size}} of {{group.limit}}</span>
+              <dir-pagination-controls style="text-align: right; margin-top: -5%;" flex="60" boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html" pagination-id="group.name"></dir-pagination-controls>
             </md-card-title>
-            <md-card-content md-scroll-y style="height: 150px; overflow: scroll;">
-              <md-list ng-repeat="members in group.members">
+            <md-card-content md-scroll-y style="height: 150px; overflow: hidden;">
+              <md-list dir-paginate="members in group.members| itemsPerPage: pageSize" current-page="currentPage" pagination-id="group.name">
                 <md-list-item>
-                  <img ng-src="http://www.elgenero.com/images/anuel.jpg" class="md-avatar" />
+                  <img ng-src="{{members.image}}" class="md-avatar" />
                   <!--<div class="md-list-item-text" layout="row">-->
-                      <p>{{members.name}}</p>
+                      <p>{{members.first}} {{members.last}}</p>
                   <!-- </div> -->
                   <md-divider ></md-divider>
               </md-list-item>
@@ -36,19 +37,20 @@
       </div>
 
       <div flex-xs flex-gt-xs="50" layout="column">
-        <md-card md-theme="default" ng-repeat="group in groupList" ng-if="$index%2!=0">
+        <md-card md-theme="default" ng-repeat="group in myGroupsList" ng-if="$index%2!=0">
           <md-card-title style="background-color: #00BF96">
             <span class="md-headline" style="color: white;">{{group.name}}</span>
           </md-card-title>
           <md-card-title>
-            <span class="md-subhead">Capacity: {{group.size}} of {{group.limit}}</span>
+            <span flex="40" class="md-subhead">Capacity: {{group.size}} of {{group.limit}}</span>
+            <dir-pagination-controls style="text-align: right; margin-top: -5%;" flex="60" boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html" pagination-id="group.name"></dir-pagination-controls>
           </md-card-title>
-          <md-card-content md-scroll-y style="height: 150px; overflow: scroll;">
-            <md-list ng-repeat="members in group.members">
+          <md-card-content md-scroll-y style="height: 150px; overflow: hidden;">
+            <md-list dir-paginate="members in group.members| itemsPerPage: pageSize" current-page="currentPage" pagination-id="group.name">
                 <md-list-item>
-                  <img ng-src="http://www.elgenero.com/images/anuel.jpg" class="md-avatar" />
+                  <img ng-src="{{members.image}}" class="md-avatar" />
                   <!--<div class="md-list-item-text" layout="row">-->
-                      <p>{{members.name}}</p>
+                      <p>{{members.first}} {{members.last}}</p>
                   <!-- </div> -->
                   <md-divider ></md-divider>
                 </md-list-item>

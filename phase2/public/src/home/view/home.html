@@ -78,7 +78,7 @@
             </md-card-title-text>
             <md-button flex="40" ng-click="route('/groups')" class="btn btn-default">See All</md-button>
         </md-card-title>
-        <md-list ng-repeat="groups in groupList" ng-if="$index<3">
+        <md-list ng-repeat="groups in myGroupsList" ng-if="$index<3">
             <md-list-item class="md-1-line">
                 <div class="md-list-item-text">
                     <h2 style="font-size:100%;" align="left">{{groups.name}}</h2>

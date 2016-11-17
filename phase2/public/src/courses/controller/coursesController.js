@@ -5,6 +5,8 @@ var app = angular.module("users")
    $scope.end = 1;
    $scope.currentPage=1;
    $scope.pageSize=2;
+   $scope.currentPage2=1;
+   $scope.pageSize2=2;
 
   //  var tutors = [{'name' : 'Tahiri Ciquitraque'}, {'name' : 'Nelson Triple A'}, {'name' : 'Israel La Bestia'}]
    //
