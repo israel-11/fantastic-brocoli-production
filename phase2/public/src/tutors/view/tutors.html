@@ -1,23 +1,29 @@
 <div>
-  <md-content style="overflow-x:hidden;" flex="80" flex-offset="10">
-      <h1>My Inbox</h1>
-      <md-divider></md-divider>
+  <md-content style="overflow-x:hidden;" flex="80" flex-offset="10" layout="column">
+    <md-content layout="row">
+      <h1 flex="40">My Inbox</h1>
+      <dir-pagination-controls style="text-align: right; margin-top: -5%;" flex="60" boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+    </md-content>
+    <md-divider></md-divider>
 
       <md-content class="md-padding" layout="row">
-       <md-list flex>
+       <md-list style="height:255px" flex>
        <!-- <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader> -->
-       <md-list-item ng-if="messages.length > 0" class="md-3-line" ng-repeat="message in messages">
-         <div>
-           <img ng-src="{{message.userImage}}" class="md-avatar" />
-           <div class="md-list-item-text" layout="column">
-             <h3>{{ message.userFirstName }} {{message.userLastName}}</h3>
-             <h4>{{ message.title }}</h4>
-             <p>{{ message.body }}</p>
+       <div dir-paginate="message in messages| itemsPerPage: pageSize" current-page="currentPage" layout="column">
+       <!-- <div ng-repeat="message in messages track by $index"> -->
+         <md-list-item ng-if="messages.length > 0" class="md-3-line" layout="row">
+           <div layout="row">
+             <img ng-src="{{message.userImage}}" class="md-avatar" />
+             <div class="md-list-item-text" layout="column">
+               <h3>{{ message.userFirstName }} {{message.userLastName}}</h3>
+               <h4>{{ message.title }}</h4>
+               <p>{{ message.body }}</p>
+             </div>
+             <md-button class="md-secondary">Respond</md-button>
            </div>
-           <md-button class="md-secondary">Respond</md-button>
-           <md-divider ng-if="!$last"></md-divider>
-         </div>
-       </md-list-item>
+         </md-list-item>
+         <md-divider></md-divider>
+       </div>
        <md-list-item ng-if="message.length == 0" class="md-3-line">
          <div>
            <md-subheader>No messages. Sorry!</md-subheader>
