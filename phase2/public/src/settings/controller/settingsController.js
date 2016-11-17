@@ -5,9 +5,7 @@ var app = angular.module("users")
     $scope.userName="User"
   }
   else{
-    console.log(JSON.stringify(user));
     $scope.userName=user.displayName;
-    console.log($scope.userName);
   }
 
   var user = firebase.auth().currentUser;
@@ -19,8 +17,6 @@ var app = angular.module("users")
   }
 
   $scope.submitData = function(){
-    console.log($scope.userName);
-    console.log($scope.photoURL);
     firebase.auth().currentUser.updateProfile({
   displayName: $scope.userName,
   photoURL: $scope.photoURL
