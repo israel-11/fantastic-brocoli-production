@@ -1,8 +1,5 @@
 var app = angular.module("users")
-    .controller('UserController',['userService','$mdSidenav','$mdBottomSheet', '$timeout', '$log', '$scope', '$mdDialog', '$location', '$rootScope', '$q', '$route', 'DirectMessageService', function(userService, $mdSidenav, $mdBottomSheet, $timeout, $log, $scope, $mdDialog, $location, $rootScope, $q, $route, DirectMessageService)
-//    .config(['$mdIconProvider', function($mdIconProvider) {
-//         $mdIconProvider.icon('md-close', 'img/icons/ic_close_24px.svg', 24);
-//    }])
+    .controller('UserController',['userService','$mdSidenav','$mdBottomSheet', '$timeout', '$log', '$scope', '$mdDialog', '$location', '$rootScope', '$q', '$route', 'DirectMessageService', 'settingsService', function(userService, $mdSidenav, $mdBottomSheet, $timeout, $log, $scope, $mdDialog, $location, $rootScope, $q, $route, DirectMessageService,settingsService)
     {
 
   /**
@@ -21,41 +18,39 @@ var app = angular.module("users")
     self.selectUser   = selectUser;
     self.toggleList   = toggleUsersList;
     self.makeContact  = makeContact;
-    $scope.myDate='';
-    $scope.countdown='__________';
     $scope.showCalendar=false;
     $scope.isFire=false;
     $scope.showName=false;
     self.courseList=[];
-    // var user = firebase.auth().currentUser;
-    // if(typeof(user)=='undefined' || !user){
-    //   $scope.userName="User"
-    // }
-    // else{
-    //   console.log(JSON.stringify(user));
-    //   $scope.userName=user.displayName;
-    //   console.log($scope.userName);
-    // }
-    //
-    // var user = firebase.auth().currentUser;
-    // if(typeof(user)=='undefined' || !user){
-    //   $scope.profilePicture="http://dialogo1.dialogo.netdna-cdn.com/wp-content/uploads/2015/12/IMG_8918.jpg?2f7f98";
-    // }
-    // else{
-    //   $scope.profilePicture=user.photoURL;
-    // }
+
+    function getSettings(){
+      // GET User Information
+      var id;
+      var email = firebase.auth().currentUser.email;
+      if(email==='israel.figueroa@upr.edu'){
+        id=1;
+        $scope.userRole='tutors'
+        $scope.route('/tutors');
+        $route.reload();
+      }
+      else{
+        id=2;
+        $scope.userRole='student';
+        $scope.route('/home');
+        $route.reload();
+      }
+      settingsService.getUserInfo(id)
+      .then(function(response){
+        $scope.userName=response[0].userFirstName;
+        $scope.profilePicture = response[0].userImage;
+        $scope.statusMessage = response[0].userStatus;
+      });
+    }
 
     $scope.route = function(path){
         $location.path(path);
     }
 
-    $scope.setCalendar = function(){
-        $scope.showCalendar = true;
-    }
-
-    $scope.saveCountdown = function(){
-        $scope.showName = false;
-    }
 
     $scope.isNavBarHide = function(){
         if($location.path().search('login')>-1){
@@ -67,9 +62,7 @@ var app = angular.module("users")
     firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     if(user.emailVerified){
-      $scope.route('/home');
-      $route.reload();
-      // GET COUNTDOWN HERE
+      getSettings();
     }
     else{
       $scope.route('/verify');
@@ -80,65 +73,6 @@ var app = angular.module("users")
   }
 });
 
-// var user = firebase.auth().currentUser;
-//
-// if (user) {
-//   if(user.emailVerified){
-//     $scope.route('/home');
-//   }
-//   else{
-//     $scope.route('/verify');
-//   }
-// }
-// else {
-//   // No user is signed in.
-//   $scope.route('/login');
-// }
-
-    // Load registered user
-    $scope.submitSettings = function(){
-            console.log($scope.name);
-            self.userSettings={
-            'name':$scope.name,
-            'status':$scope.status,
-            'lastName':$scope.lastName,
-            'image' : 'coger path'
-            }
-            $scope.userName=$scope.name;
-            console.log($scope.courseList);
-            self.loggedIn=true;
-            if($scope.userRole.search('tutors')>-1){
-                $scope.route('/tutors');
-            }
-            else{
-                $scope.route('/home');
-            }
-
-            $timeout(function() {
-                $scope.$apply();
-            });
-        }
-
-    //    // Load registered user
-        $scope.submitInfo = function(){
-            $scope.userRole='tutors';
-            console.log($scope.name);
-            self.userSettings={
-            'name':$scope.name,
-            'status':$scope.status,
-            'lastName':$scope.lastName,
-            'image' : 'coger path'
-            }
-            $scope.userName=$scope.name;
-            console.log($scope.courseList);
-            self.loggedIn=true;
-            if($scope.userRole.search('tutors')>-1){
-                $scope.route('/tutors');
-            }
-            else{
-                $scope.route('/home');
-            }
-        }
     $scope.logIn = function(){
             var validated = true;
             var email = $scope.userEmail;
@@ -151,7 +85,6 @@ var app = angular.module("users")
               swal("Please type a password", "", "warning");
               validated = false;
             }
-            $scope.userRole='students';
             if(validated){
               $scope.loading=true;
               firebase.auth().signInWithEmailAndPassword(email, password)
@@ -266,45 +199,7 @@ var app = angular.module("users")
 
         }
 
-    $scope.setDate = function(date){
-        $scope.showCalendar=false;
 
-        $scope.showName = true;
-        //Format: Mon Oct 03 2016 00:00:00 GMT-0400 (AST)
-        var month = date.getMonth()+1;
-        var day = date.getDate();
-        var year = date.getFullYear();
-        var date = year.toString()+'/'+month.toString()+'/'+day.toString();
-
-        $("#day")
-          .countdown(date, function(event) {
-            $(this).text(
-              event.strftime('%D')
-            );
-          });
-
-          $("#hour")
-          .countdown(date, function(event) {
-            $(this).text(
-              event.strftime('%H')
-            );
-          });
-
-          $("#min")
-          .countdown(date, function(event) {
-            $(this).text(
-              event.strftime('%M')
-            );
-          });
-
-          $("#sec")
-          .countdown(date, function(event) {
-            $(this).text(
-              event.strftime('%S')
-            );
-          });
-
-    }
 
     userService
           .loadAllUsers()

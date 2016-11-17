@@ -4,7 +4,7 @@ angular.module('users')
 function($http) {
 	var studentService = {};
 	studentService.getStudents = function () {
-		return $http.get("http://glacial-journey-85518.herokuapp.com/allstudents")
+		return $http.get("https://glacial-journey-85518.herokuapp.com/allstudents")
 		.then(function (response) {
 			return response.data;
 		})
@@ -14,7 +14,7 @@ function($http) {
 	};
 
 	studentService.getStudentCourses = function(studentID){
-	    return $http.get("http://glacial-journey-85518.herokuapp.com/studentCourses/"+studentID)
+	    return $http.get("https://glacial-journey-85518.herokuapp.com/studentCourses/"+studentID)
 	    .then(function(response) {
 	        return response.data;
 	    })
@@ -25,7 +25,7 @@ function($http) {
 	}
 
 	studentService.getStudentGroups = function(studentID){
-    	    return $http.get("http://glacial-journey-85518.herokuapp.com/groupStudents/"+studentID)
+    	    return $http.get("https://glacial-journey-85518.herokuapp.com/groupStudents/"+studentID)
     	    .then(function(response) {
     	        return response.data;
     	    })
@@ -36,7 +36,7 @@ function($http) {
     }
 
     studentService.getAllGroups = function(){
-        	    return $http.get("http://glacial-journey-85518.herokuapp.com/allgroups")
+        	    return $http.get("https://glacial-journey-85518.herokuapp.com/allgroups")
         	    .then(function(response) {
         	        return response.data;
         	    })

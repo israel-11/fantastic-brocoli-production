@@ -14,7 +14,7 @@
               <span flex="40" ng-if="course.tutors[0].first" class="md-subhead">Available Tutors:</span>
               <!-- <span style="text-align:center; color:#2D5F99; font-size:25px;" flex="20" ng-click="previousTutors();" aria-label="Send Message" class="md-secondary md-hue-3 fa fa-arrow-circle-left fa-lg" ></span>
               <span style="text-align:center; color:#2D5F99; font-size:25px;" flex="20" ng-click="nextTutors()" aria-label="Send Message" class="md-secondary md-hue-3 fa fa-arrow-circle-right fa-lg" ></span> -->
-              <dir-pagination-controls style="text-align:center;" flex="60" ng-if="course.tutors[0].first" boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+              <dir-pagination-controls style="text-align: right; margin-top: -5%;" flex="60" ng-if="course.tutors[0].first" boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
               <span ng-if="!course.tutors[0].first" class="md-subhead">We are sorry</span>
             </md-card-title>
             <md-card-content md-scroll-y style="height: 150px; overflow-x:hidden;">
