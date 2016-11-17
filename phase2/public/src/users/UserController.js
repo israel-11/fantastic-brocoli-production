@@ -1,5 +1,5 @@
 var app = angular.module("users")
-    .controller('UserController',['userService', 'studentService', 'tutorsService','accountsService','$mdSidenav','$mdBottomSheet', '$timeout', '$log', '$scope', '$mdDialog', '$location', '$q', '$route', function(userService, studentService, tutorService, accountsService, $mdSidenav, $mdBottomSheet, $timeout, $log, $scope, $mdDialog, $location, $q, $route)
+    .controller('UserController',['userService', 'studentService', 'tutorsService','accountsService','$mdSidenav','$mdBottomSheet', '$timeout', '$log', '$scope', '$mdDialog', '$location', '$q', '$route', function(userService, studentService, tutorsService, accountsService, $mdSidenav, $mdBottomSheet, $timeout, $log, $scope, $mdDialog, $location, $q, $route)
     {
 
   /**
@@ -228,86 +228,88 @@ var app = angular.module("users")
 
     //
     var imagePath = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtf1/v/t1.0-1/13912618_10154625059185827_4804033282118954744_n.jpg?oh=71c307466a6f3cf85ffc580d1a588c02&oe=58C703DB&__gda__=1485738904_e299d10033dcc5340dcf7c055ddfd831";
-    $scope.messages = [
-        {
-          face : imagePath,
-          what: 'Brunch this weekend?',
-          who: 'Min Li Chan',
-          when: '3:08PM',
-          notes: " I'll be in your neighborhood doing errands"
-        },
-        {
-          face : imagePath,
-          what: 'Brunch this weekend?',
-          who: 'Min Li Chan',
-          when: '3:08PM',
-          notes: " I'll be in your neighborhood doing errands"
-        },
-        {
-          face : imagePath,
-          what: 'Brunch this weekend?',
-          who: 'Min Li Chan',
-          when: '3:08PM',
-          notes: " I'll be in your neighborhood doing errands"
-        },
-        {
-          face : imagePath,
-          what: 'Brunch this weekend?',
-          who: 'Min Li Chan',
-          when: '3:08PM',
-          notes: " I'll be in your neighborhood doing errands"
-        },
-        {
-          face : imagePath,
-          what: 'Brunch this weekend?',
-          who: 'Min Li Chan',
-          when: '3:08PM',
-          notes: " I'll be in your neighborhood doing errands"
-        },
-        {
-          face : imagePath,
-          what: 'Brunch this weekend?',
-          who: 'Min Li Chan',
-          when: '3:08PM',
-          notes: " I'll be in your neighborhood doing errands"
-        },
-        {
-          face : imagePath,
-          what: 'Brunch this weekend?',
-          who: 'Min Li Chan',
-          when: '3:08PM',
-          notes: " I'll be in your neighborhood doing errands"
-        },
-        {
-          face : imagePath,
-          what: 'Brunch this weekend?',
-          who: 'Min Li Chan',
-          when: '3:08PM',
-          notes: " I'll be in your neighborhood doing errands"
-        },
-        {
-          face : imagePath,
-          what: 'Brunch this weekend?',
-          who: 'Min Li Chan',
-          when: '3:08PM',
-          notes: " I'll be in your neighborhood doing errands"
-        },
-        {
-          face : imagePath,
-          what: 'Brunch this weekend?',
-          who: 'Min Li Chan',
-          when: '3:08PM',
-          notes: " I'll be in your neighborhood doing errands"
-        },
-        {
-          face : imagePath,
-          what: 'Brunch this weekend?',
-          who: 'Min Li Chan',
-          when: '3:08PM',
-          notes: " I'll be in your neighborhood doing errands"
-        },
-      ];
+//    $scope.messages = [
+//        {
+//          face : imagePath,
+//          what: 'Brunch this weekend?',
+//          who: 'Min Li Chan',
+//          when: '3:08PM',
+//          notes: " I'll be in your neighborhood doing errands"
+//        },
+//        {
+//          face : imagePath,
+//          what: 'Brunch this weekend?',
+//          who: 'Min Li Chan',
+//          when: '3:08PM',
+//          notes: " I'll be in your neighborhood doing errands"
+//        },
+//        {
+//          face : imagePath,
+//          what: 'Brunch this weekend?',
+//          who: 'Min Li Chan',
+//          when: '3:08PM',
+//          notes: " I'll be in your neighborhood doing errands"
+//        },
+//        {
+//          face : imagePath,
+//          what: 'Brunch this weekend?',
+//          who: 'Min Li Chan',
+//          when: '3:08PM',
+//          notes: " I'll be in your neighborhood doing errands"
+//        },
+//        {
+//          face : imagePath,
+//          what: 'Brunch this weekend?',
+//          who: 'Min Li Chan',
+//          when: '3:08PM',
+//          notes: " I'll be in your neighborhood doing errands"
+//        },
+//        {
+//          face : imagePath,
+//          what: 'Brunch this weekend?',
+//          who: 'Min Li Chan',
+//          when: '3:08PM',
+//          notes: " I'll be in your neighborhood doing errands"
+//        },
+//        {
+//          face : imagePath,
+//          what: 'Brunch this weekend?',
+//          who: 'Min Li Chan',
+//          when: '3:08PM',
+//          notes: " I'll be in your neighborhood doing errands"
+//        },
+//        {
+//          face : imagePath,
+//          what: 'Brunch this weekend?',
+//          who: 'Min Li Chan',
+//          when: '3:08PM',
+//          notes: " I'll be in your neighborhood doing errands"
+//        },
+//        {
+//          face : imagePath,
+//          what: 'Brunch this weekend?',
+//          who: 'Min Li Chan',
+//          when: '3:08PM',
+//          notes: " I'll be in your neighborhood doing errands"
+//        },
+//        {
+//          face : imagePath,
+//          what: 'Brunch this weekend?',
+//          who: 'Min Li Chan',
+//          when: '3:08PM',
+//          notes: " I'll be in your neighborhood doing errands"
+//        },
+//        {
+//          face : imagePath,
+//          what: 'Brunch this weekend?',
+//          who: 'Min Li Chan',
+//          when: '3:08PM',
+//          notes: " I'll be in your neighborhood doing errands"
+//        },
+//      ];
     //
+
+    $scope.messages = [];
 
     /**
      * Select the current avatars
@@ -367,24 +369,27 @@ var app = angular.module("users")
 
    $scope.tempCourses = [];
 
-   $scope.courseList=[
-       {'id' :0,
-        'code' : 'ICOM5016',
-        'class': 'selectedButton'
-       },
-       {'id' :1,
-        'code' : 'ICOM4035',
-        'class': 'unselectedButton'
-       },
-       {'id' :2,
-        'code' : 'ICOM4075',
-        'class': 'unselectedButton'
-       },
-       {'id' :3,
-        'code' : 'ICOM4009',
-        'class': 'unselectedButton'
-        }
-      ];
+//   $scope.courseList=[
+//       {'id' :0,
+//        'code' : 'ICOM5016',
+//        'class': 'selectedButton'
+//       },
+//       {'id' :1,
+//        'code' : 'ICOM4035',
+//        'class': 'unselectedButton'
+//       },
+//       {'id' :2,
+//        'code' : 'ICOM4075',
+//        'class': 'unselectedButton'
+//       },
+//       {'id' :3,
+//        'code' : 'ICOM4009',
+//        'class': 'unselectedButton'
+//        }
+//      ];
+
+   $scope.courseList = [];
+
 
    $scope.selectedCourse = $scope.courseList[0];
 
@@ -415,9 +420,9 @@ var app = angular.module("users")
    function saveCourses() {
         var length = $scope.tempCourses.length;
         for (var i = 0; i < length; i++) {
-            $scope.currentCourses.push($scope.tempCourses[i]);
+            $scope.courseList.push($scope.tempCourses[i]);
             console.log($scope.tempCourses[i]);
-
+            //POST AQUI SOBRE LOS CURSOS NUEVOS DEL TUTOR
         }
 
 //        console.log(tempCourses);
@@ -435,8 +440,8 @@ var app = angular.module("users")
      }
 
    function removeCourse() {
-           $scope.currentCourses.splice(courseToDelete,1);
-           //console.log($scope.currentCourses);
+           $scope.courseList.splice(courseToDelete,1);
+           console.log($scope.courseList);
 
       }
 
@@ -454,7 +459,7 @@ var app = angular.module("users")
     }
 
     function deleteCourse(course){
-        var index = $scope.currentCourses.indexOf(course);
+        var index = $scope.courseList.indexOf(course);
         courseToDelete = index;
         //console.log(courseToDelete);
     }
@@ -712,6 +717,36 @@ var app = angular.module("users")
                                             $scope.countdown = response2[0].title;
                                             $scope.setDate(new Date(response2[0].time));
                                         });
+                                   studentService.getDirectMessages(id)
+                                       .then(function(response){
+                                           for(var i = 0; i < response.length; i++)
+                                           {
+                                               var object = {'userImage': response[i].userImage,
+                                                               'title': response[i].title,
+                                                               'userFirstName': response[i].userFirstName,
+                                                               'userLastName': response[i].userLastName,
+                                                               'body': response[i].body};
+
+                                               $scope.messages.push(object);
+                                           }
+
+                                       });
+                                    studentService.getGroupMessages(id)
+                                      .then(function(response){
+
+                                          $scope.groupMessages = [];
+                                          for(var i = 0; i < response.length; i++)
+                                          {
+                                              var object = {'userImage': response[i].userImage,
+                                                              'title': response[i].title,
+                                                              'userFirstName': response[i].userFirstName,
+                                                              'userLastName': response[i].userLastName,
+                                                              'body': response[i].body};
+
+                                              $scope.groupMessages.push(object);
+                                          }
+
+                                      });
 
                                 });
                     }
@@ -722,6 +757,50 @@ var app = angular.module("users")
                         $scope.statusMessage = users[i].userStatus;
                         $scope.profilePicture = users[i].userImage;
                         $scope.userName = users[i].userFirstName;
+                        tutorsService.getTutorInfo(users[i].userId)
+                            .then(function(response){
+                                $scope.tutorID = response[0].tutorId;
+
+                            })
+                            .then(function(){
+                                tutorsService.getTutorCourses($scope.tutorID)
+                                    .then(function(response){
+
+                                        function setAvailability(av)
+                                        {
+                                            if(av === 0)
+                                                return 'Unavailable';
+                                            else
+                                                return 'Available';
+                                        }
+
+                                        for(var i = 0; i < response.length; i++)
+                                        {
+                                            var object = {'id': response[i].courseId,
+                                                        'code': response[i].courseCode,
+                                                        'name': response[i].courseName,
+                                                        'availability': setAvailability(response[i].available)};
+                                            $scope.courseList.push(object);
+                                        }
+                                    });
+
+                                tutorsService.getDirectMessages($scope.tutorID)
+                                    .then(function(response){
+                                        console.log(JSON.stringify(response));
+                                        for(var i = 0; i < response.length; i++)
+                                        {
+                                            var object = {'userImage': response[i].userImage,
+                                                            'title': response[i].title,
+                                                            'userFirstName': response[i].userFirstName,
+                                                            'userLastName': response[i].userLastName,
+                                                            'body': response[i].body};
+
+                                            $scope.messages.push(object);
+                                        }
+
+                                    });
+
+                            });
                     }
                 }
             }

@@ -6,13 +6,13 @@
         <section>
           <md-subheader class="md-primary">Direct Messages</md-subheader>
           <md-list layout-padding>
-            <md-list-item class="md-3-line" ng-repeat="message in inbox.messages">
-                <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+            <md-list-item class="md-3-line" ng-repeat="message in messages">
+                <img ng-src="{{message.userImage}}" class="md-avatar" alt="{{message.userFirstName}} {{message.userLastName}}">
                 <div class="md-list-item-text">
-                  <h3>{{message.what}}</h3>
-                  <h4>{{message.who}}</h4>
+                  <h3>{{message.title}}</h3>
+                  <h4>{{message.userFirstName}} {{message.userLastName}}</h4>
                   <p>
-                    {{message.notes}}
+                    {{message.body}}
                   </p>
                 </div>
                 <md-divider></md-divider>
@@ -23,13 +23,13 @@
         <section ng-if="userRole!='tutors'">
           <md-subheader class="md-warn">Group Messages</md-subheader>
           <md-list layout="column" layout-padding>
-            <md-list-item class="md-3-line" ng-repeat="message in messages">
-              <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+            <md-list-item class="md-3-line" ng-repeat="message in groupMessages">
+              <img ng-src="{{message.userImage}}" class="md-avatar" alt="{{message.userFirstName}} {{message.userLastName}}">
               <div class="md-list-item-text">
-                <h3>{{message.what}}</h3>
-                <h4>{{message.who}}</h4>
+                <h3>{{message.title}}</h3>
+                <h4>{{message.userFirstName}} {{message.userLastName}}</h4>
                 <p>
-                  {{message.notes}}
+                  {{message.body}}
                 </p>
               </div>
             </md-list-item>
