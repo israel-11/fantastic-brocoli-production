@@ -1,5 +1,5 @@
 var app = angular.module("users")
-    .controller('UserController',['userService', 'studentService', 'tutorsService','accountsService','$mdSidenav','$mdBottomSheet', '$timeout', '$log', '$scope', '$mdDialog', '$location', '$q', '$route', function(userService, studentService, tutorService, accountsService, $mdSidenav, $mdBottomSheet, $timeout, $log, $scope, $mdDialog, $location, $q, $route)
+    .controller('UserController',['userService', 'studentService', 'tutorsService','accountsService','$mdSidenav','$mdBottomSheet', '$timeout', '$log', '$scope', '$mdDialog', '$location', '$q', '$route', function(userService, studentService, tutorsService, accountsService, $mdSidenav, $mdBottomSheet, $timeout, $log, $scope, $mdDialog, $location, $q, $route)
     {
 
   /**
@@ -367,24 +367,27 @@ var app = angular.module("users")
 
    $scope.tempCourses = [];
 
-   $scope.courseList=[
-       {'id' :0,
-        'code' : 'ICOM5016',
-        'class': 'selectedButton'
-       },
-       {'id' :1,
-        'code' : 'ICOM4035',
-        'class': 'unselectedButton'
-       },
-       {'id' :2,
-        'code' : 'ICOM4075',
-        'class': 'unselectedButton'
-       },
-       {'id' :3,
-        'code' : 'ICOM4009',
-        'class': 'unselectedButton'
-        }
-      ];
+//   $scope.courseList=[
+//       {'id' :0,
+//        'code' : 'ICOM5016',
+//        'class': 'selectedButton'
+//       },
+//       {'id' :1,
+//        'code' : 'ICOM4035',
+//        'class': 'unselectedButton'
+//       },
+//       {'id' :2,
+//        'code' : 'ICOM4075',
+//        'class': 'unselectedButton'
+//       },
+//       {'id' :3,
+//        'code' : 'ICOM4009',
+//        'class': 'unselectedButton'
+//        }
+//      ];
+
+   $scope.courseList = [];
+
 
    $scope.selectedCourse = $scope.courseList[0];
 
@@ -722,6 +725,33 @@ var app = angular.module("users")
                         $scope.statusMessage = users[i].userStatus;
                         $scope.profilePicture = users[i].userImage;
                         $scope.userName = users[i].userFirstName;
+                        tutorsService.getTutorInfo(users[i].userId)
+                            .then(function(response){
+                                $scope.tutorID = response[0].tutorId;
+
+                            })
+                            .then(function(){
+                                tutorsService.getTutorCourses($scope.tutorID)
+                                    .then(function(response){
+
+                                        function setAvailability(av)
+                                        {
+                                            if(av === 0)
+                                                return false;
+                                            else
+                                                return true;
+                                        }
+
+                                        for(var i = 0; i < response.length; i++)
+                                        {
+                                            var object = {'id': response[0].courseId,
+                                                        'name': response[0].courseName,
+                                                        'availability': setAvailability(response[0].available)};
+                                            $scope.courseList.push(object);
+                                        }
+                                    });
+
+                            });
                     }
                 }
             }
