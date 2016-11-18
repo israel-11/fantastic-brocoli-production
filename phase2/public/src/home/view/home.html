@@ -20,26 +20,26 @@
           </div>
         </div>
     </div>
-    <div ng-if="!showCalendar&&!showName" ng-click="setCalendar()" style="margin-top:8%;margin-left:-16%" class="col-lg-4 col-lg-push-2 col-xs-4 col-xs-push-3">
-        <i style="font-size: 3em;" class="fa fa-circle-thin fa-stack-2x"></i>
-        <i style="line-height: 38px;font-size: 1.5em;" class="fa fa-pencil fa-stack-1x"></i>
+    <div ng-if="!showCalendar&&!showName" ng-click="setCalendar()" style="margin-top: 50px;"; class="">
+        <i style="font-size: 3em;" class="fa fa-circle-thin fa-stack-2x col-md-push-2 col-xs-push-5"></i>
+        <i style="line-height: 38px;font-size: 1.5em;" class="fa fa-pencil fa-stack-1x col-md-push-2 col-xs-push-5"></i>
     </div>
-    <div ng-if="showCalendar" class="col-xs-4 col-xs-push-2" style="margin-top:5%;">
+    <div ng-if="showCalendar" class="col-md-4 col-md-push-5 col-xs-4 col-xs-push-4" style="margin-top:5%;">
         <div flex-gt-xs>
             <h4>Select Countdown Date</h4>
             <md-datepicker ng-change="setDate(myDate)" ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
         </div>
     </div>
-    <div ng-show="showName" class="col-xs-4 col-xs-push-2" style="margin-top:5%;">
+    <div ng-show="showName" class="col-md-4 col-md-push-5 col-xs-4 col-xs-push-4" style="margin-top:5%;">
         <div flex-gt-xs>
             <h4>Select Countdown Name</h4>
-            <md-input-container flex="40" class="md-icon-float md-block">
+            <md-input-container flex class="md-icon-float md-block">
                 <!-- Use floating label instead of placeholder -->
                 <label>Countdown Name</label>
                 <md-icon style="font-size:20px;" class="fa fa-calendar"></md-icon>
                 <input ng-model="countdown" type="text">
             </md-input-container>
-            <button ng-click="saveCountdown()" style="padding: 1%; margin-top: -7%;" class="col-xs-2 col-xs-push-3 btn btn-success">Done</button>
+            <button ng-click="saveCountdown()" style="padding: 1%; margin-top: -7%;" class="col-xs-4 col-xs-push-4 btn btn-success">Done</button>
         </div>
     </div>
 </div>

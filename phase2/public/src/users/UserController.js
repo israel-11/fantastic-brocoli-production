@@ -744,6 +744,7 @@ var app = angular.module("users")
 //                                            console.log(JSON.stringify(response2));
                                             $scope.countdown = response2[0].title;
                                             $scope.setDate(new Date(response2[0].time));
+                                            $scope.saveCountdown();
                                         });
                                    studentService.getDirectMessages(id)
                                        .then(function(response){
@@ -879,7 +880,7 @@ var app = angular.module("users")
                     event.strftime('%S')
                   );
                 });
-                $scope.saveCountdown();
+
 
                 //MAKE POST TO ENDPOINT HERE Params: title = $scope.countdown, time = date
           }
