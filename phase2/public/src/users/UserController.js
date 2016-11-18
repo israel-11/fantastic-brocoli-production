@@ -738,7 +738,7 @@ var app = angular.module("users")
                                           for(var i = 0; i < response.length; i++)
                                           {
                                               var object = {'userImage': response[i].userImage,
-                                                              'title': response[i].title,
+                                                              'groupName': response[i].groupName,
                                                               'userFirstName': response[i].userFirstName,
                                                               'userLastName': response[i].userLastName,
                                                               'body': response[i].body};
