@@ -395,7 +395,15 @@ var app = angular.module("users")
          };
 
          $scope.answer = function(answer) {
-           $mdDialog.hide(answer);
+           if (answer==="useful"){
+             swal(
+               'Joined!',
+               'Group(s) added.',
+               'success'
+             )
+             $mdDialog.hide(answer);
+           }
+           else $mdDialog.hide(answer);
          };
        }
 
