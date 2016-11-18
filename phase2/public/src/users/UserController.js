@@ -171,10 +171,13 @@ var app = angular.module("users")
                     $scope.url.push(e);
                     $scope.url.push(e.target.result);
                     $scope.settings= result.slice();
-                    $scope.settings[2] = $scope.url[1];
-                    console.log(JSON.stringify($scope.settings));
+                    if($scope.url.length>1){
+                        $scope.settings[2] = $scope.url[1];
+                    }
+                    
                     swal({
                       imageUrl: e.target.result
+
                     })
                   }
                   reader.readAsDataURL(result[2]);
