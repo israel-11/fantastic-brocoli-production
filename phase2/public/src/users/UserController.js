@@ -174,7 +174,7 @@ var app = angular.module("users")
                     if($scope.url.length>1){
                         $scope.settings[2] = $scope.url[1];
                     }
-                    
+
                     swal({
                       imageUrl: e.target.result
 
@@ -545,7 +545,15 @@ var app = angular.module("users")
       };
 
       $scope.answer = function(answer) {
-        $mdDialog.hide(answer);
+        if (answer==="useful"){
+          swal(
+            'Joined!',
+            'Course(s) added.',
+            'success'
+          )
+          $mdDialog.hide(answer);
+        }
+        else $mdDialog.hide(answer);
       };
     }
 
