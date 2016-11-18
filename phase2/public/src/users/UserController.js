@@ -899,5 +899,20 @@ var app = angular.module("users")
             })
           }
 
+          $scope.exit = function(){
+            swal({
+              title: 'Are you sure?',
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonText: 'Yes, remove!'
+            }).then(function () {
+              swal(
+                'Removed!',
+                'You are no longer teaching the course.',
+                'success'
+              )
+            })
+          }
+
 
   }]);
