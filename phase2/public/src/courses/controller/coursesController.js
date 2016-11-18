@@ -102,7 +102,7 @@ var app = angular.module("users")
 
    $scope.message = function(){
      swal({
-       title: 'Respond to message',
+       title: 'Contact Tutor.',
        input: 'text',
        showCancelButton: true,
        confirmButtonText: 'Send'

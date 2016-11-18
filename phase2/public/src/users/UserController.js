@@ -884,6 +884,20 @@ var app = angular.module("users")
                 //MAKE POST TO ENDPOINT HERE Params: title = $scope.countdown, time = date
           }
 
+          $scope.replyMessage = function(){
+            swal({
+              title: 'Reply',
+              input: 'text',
+              showCancelButton: true,
+              confirmButtonText: 'Send'
+            }).then(function () {
+              swal(
+                'Sent!',
+                '',
+                'success'
+              )
+            })
+          }
 
 
   }]);

@@ -401,7 +401,7 @@ var app = angular.module("users")
 
     $scope.message = function(){
       swal({
-        title: 'Respond to message',
+        title: 'Group Post',
         input: 'text',
         showCancelButton: true,
         confirmButtonText: 'Send'
