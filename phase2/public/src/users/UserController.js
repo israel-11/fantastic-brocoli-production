@@ -10,6 +10,8 @@ var app = angular.module("users")
    * @constructor
    */
 
+    $scope.currentPage=1;
+    $scope.pageSize=3;
     var self = this;
     $scope.statusMessage = 'El ser humano es vago por naturaleza';
     self.loggedIn = false;
@@ -132,35 +134,64 @@ var app = angular.module("users")
                 firebase.auth().currentUser.sendEmailVerification();
                 swal('Verification email sent.', "", "success");
                 $route.reload();
-                //
+                //DO NOT DELETE FOLLOWING CODE
                 swal.setDefaults({
-                  input: 'text',
+                  title: 'Set Up your info.',
                   confirmButtonText: 'Next &rarr;',
-                  showCancelButton: true,
+                  showCancelButton: false,
                   animation: false,
-                  progressSteps: ['1', '2', '3']
+                  progressSteps: ['1', '2', '3'],
+                  allowOutsideClick: false,
+                  allowEscapeKey: false
                 })
 
                 var steps = [
                   {
-                    title: 'Set Up your info.',
+                    input:'text',
+                    inputPlaceholder:'Your Name Here',
                     text: 'What is your name?'
                   },
-                  'Question 2',
-                  'Question 3'
+                  {
+                    input: 'checkbox',
+                    inputValue: 0,
+                    inputPlaceholder:'Check if you are a tutor.',
+                  },
+                  {
+                    input: 'file',
+                    inputAttributes: {
+                      accept: 'image/*'
+                    }
+                  }
                 ]
 
                 swal.queue(steps).then(function (result) {
+                  $scope.url = [];
+                  var reader = new FileReader
+                  reader.onload = function (e) {
+                    $scope.url.push(e);
+                    $scope.url.push(e.target.result);
+                    $scope.settings= result.slice();
+                    if($scope.url.length>1){
+                        $scope.settings[2] = $scope.url[1];
+                    }
+
+                    swal({
+                      imageUrl: e.target.result
+
+                    })
+                  }
+                  reader.readAsDataURL(result[2]);
                   swal.resetDefaults()
                   swal({
                     title: 'All done!',
-                    html:'Welcome: <h4>' + JSON.stringify(result[0]) + '</h4>',
+                    html:'Welcome: <h4>' + JSON.stringify(result) + '</h4>',
                     confirmButtonText: 'Lovely!',
                     showCancelButton: false
                   })
                 }, function () {
                   swal.resetDefaults()
                 })
+
                 //
               }).catch(function(error) {
                 // Handle Errors here.
@@ -182,7 +213,7 @@ var app = angular.module("users")
 
         $scope.forgotPassword = function(){
           var email=$scope.userEmail;
-          if(typeof email === 'undefined' || !emailsorry){
+          if(typeof email === 'undefined' || !email){
             swal('Please type your email.', "", "info");
           }
           else{
@@ -514,7 +545,15 @@ var app = angular.module("users")
       };
 
       $scope.answer = function(answer) {
-        $mdDialog.hide(answer);
+        if (answer==="useful"){
+          swal(
+            'Joined!',
+            'Course(s) added.',
+            'success'
+          )
+          $mdDialog.hide(answer);
+        }
+        else $mdDialog.hide(answer);
       };
     }
 
@@ -716,6 +755,7 @@ var app = angular.module("users")
 //                                            console.log(JSON.stringify(response2));
                                             $scope.countdown = response2[0].title;
                                             $scope.setDate(new Date(response2[0].time));
+                                            $scope.saveCountdown();
                                         });
                                    studentService.getDirectMessages(id)
                                        .then(function(response){
@@ -851,11 +891,40 @@ var app = angular.module("users")
                     event.strftime('%S')
                   );
                 });
-                $scope.saveCountdown();
+
 
                 //MAKE POST TO ENDPOINT HERE Params: title = $scope.countdown, time = date
           }
 
+          $scope.replyMessage = function(){
+            swal({
+              title: 'Reply',
+              input: 'text',
+              showCancelButton: true,
+              confirmButtonText: 'Send'
+            }).then(function () {
+              swal(
+                'Sent!',
+                '',
+                'success'
+              )
+            })
+          }
+
+          $scope.exit = function(){
+            swal({
+              title: 'Are you sure?',
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonText: 'Yes, remove!'
+            }).then(function () {
+              swal(
+                'Removed!',
+                'You are no longer teaching the course.',
+                'success'
+              )
+            })
+          }
 
 
   }]);

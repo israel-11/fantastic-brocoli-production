@@ -100,4 +100,37 @@ var app = angular.module("users")
      return tutors;
    }
 
+   $scope.message = function(){
+     swal({
+       title: 'Contact Tutor.',
+       input: 'text',
+       showCancelButton: true,
+       confirmButtonText: 'Send'
+     }).then(function () {
+       swal(
+         'Sent!',
+         'The tutor has been notified.',
+         'success'
+       )
+     })
+   }
+
+   $scope.donate = function(){
+     swal({
+       title: 'Send gift card?',
+       imageUrl: 'https://cdn.shopify.com/s/files/1/0662/0785/products/e38bd83af578077b65a31424bd24d085_1024x1024.png?v=1412203835',
+       imageWidth: 400,
+       imageHeight: 200,
+       animation: false,
+       showCancelButton: true,
+       confirmButtonText: 'Yes'
+     }).then(function () {
+       swal(
+         'Sent!',
+         'The tutor will be greatful.',
+         'success'
+       )
+     })
+   }
+
 }]);
