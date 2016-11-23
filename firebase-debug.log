@@ -1,0 +1,9 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/bin/firebase login
+[debug] CLI Version:  3.1.0
+[debug] Platform:     linux
+[debug] Node Version: v7.0.0
+[debug] Time:         Sat Nov 19 2016 02:12:37 GMT-0400 (AST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Already logged in as israel.figueroa1@upr.edu
