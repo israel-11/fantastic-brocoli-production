@@ -49,6 +49,9 @@ var app = angular.module("users")
           });
       }
 
+      $scope.currentPath = function(){
+        return $location.path();
+      }
 
     $scope.route = function(path){
         $location.path(path);

@@ -21,6 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 
+    <link rel="stylesheet" href="/assets/login.css"/>
 
 
     <style type="text/css">
@@ -39,7 +40,11 @@
       <left-sidebar></left-sidebar>
       <right-sidebar></right-sidebar>
 
-      <md-content style="position:relative; overflow-x:hidden;" flex="100" id="main-content">
+      <md-content ng-hide="currentPath() === '/login'" style="position:relative; overflow-x:hidden;" flex="100" id="main-content">
+        <div ng-view> </div>
+      </md-content>
+
+      <md-content ng-show="currentPath()==='/login'" style="position: relative; overflow-x:hidden; background-color: teal;" flex="100" id="main-content">
         <div ng-view> </div>
       </md-content>
 
@@ -89,6 +94,7 @@
   <script src="../node_modules/angular-messages/angular-messages.min.js"></script>
   <script src="./assets/ng-material.js"></script>
   <script src = "src/tutors/controller/tutorsController.js"></script>
+  <script src="/src/login/loginController.js"></script>
   <script src="dirPagination.js"></script>
   <script src="yiftee_api.js"></script>
   <script type="text/javascript">
