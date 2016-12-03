@@ -29,7 +29,7 @@ var app = angular.module("users")
       // GET User Information
       var id;
       var email = firebase.auth().currentUser.email;
-      if(email==='israel.figueroa@upr.edu'){
+      if(email==='israel.figueroa1@upr.edu'){
         id=1;
         $scope.userRole='tutors'
         $scope.route('/tutors');

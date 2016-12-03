@@ -131,19 +131,18 @@ var app = angular.module("users")
     //      'success'
     //    )
     //  })
-    console.log('sender:'+sender);
-        // var senderName = sender;
-        // var recipientName = receiver;
-        // var recipientPhone = '7875181788';
-        // var recipientEmail = email;
-        // var demo = 'yifti';
-        // var production = 'yiftee';
-        // var page = 'http://app.'+demo+'.com/api/v1/gifts/send.html?api_token=1a461040ef067dea7f40fd8ef3b2663c4&sender_name='+senderName+'&recipient_name='+recipientName+'&recipient_email='+recipientEmail
-        // swal({
-        //   html:'<iframe style="border: 0px; height:300px; " src="' + page + '" width="100%" height="100%"></iframe>',
-        //   showCancelButton : true,
-        //   showConfirmButton : false
-        // })
+        var senderName = sender;
+        var recipientName = 'Israel';
+        var recipientPhone = '7875181788';
+        var recipientEmail = 'israel.figueroa1@upr.edu';
+        var demo = 'yifti';
+        var production = 'yiftee';
+        var page = 'http://app.'+demo+'.com/api/v1/gifts/send.html?api_token=1a461040ef067dea7f40fd8ef3b2663c4&sender_name='+senderName+'&recipient_name='+recipientName+'&recipient_email='+recipientEmail
+        swal({
+          html:'<iframe style="border: 0px; height:300px; " src="' + page + '" width="100%" height="100%"></iframe>',
+          showCancelButton : true,
+          showConfirmButton : false
+        })
    }
 
 }]);
