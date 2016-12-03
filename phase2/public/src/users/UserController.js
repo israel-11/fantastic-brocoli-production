@@ -24,6 +24,7 @@ var app = angular.module("users")
     $scope.isFire=false;
     $scope.showName=false;
     self.courseList=[];
+    $scope.countdown = "";
 
     function getSettings(){
       // GET User Information
@@ -91,6 +92,7 @@ var app = angular.module("users")
               swal("Please type a password", "", "warning");
               validated = false;
             }
+            console.log(validated);
             if(validated){
               $scope.loading=true;
               firebase.auth().signInWithEmailAndPassword(email, password)
@@ -750,12 +752,15 @@ var app = angular.module("users")
                                     $scope.lastName = student.userLastName;
                                     $scope.profilePicture = student.userImage;
                                     id = response[0].studentId;
-                                    console.log(JSON.stringify(response));
                                 })
                                 .then(function(){
                                     studentService.getCountdown(id)
                                         .then(function(response2){
 //                                            console.log(JSON.stringify(response2));
+
+                                              if($scope.countdown.length>0){
+                                                $timeout(location.reload());
+                                              }
                                             $scope.countdown = response2[0].title;
                                             $scope.setDate(new Date(response2[0].time));
                                             $scope.saveCountdown();
